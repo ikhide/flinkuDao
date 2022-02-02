@@ -10,7 +10,8 @@ const bundleDropModule = sdk.getBundleDropModule(
 
 const App = () => {
   // Use the connectWallet hook thirdweb gives us.
-  const { connectWallet, address, error, provider } = useWeb3();
+  const { connectWallet, address, error, provider, disconnectWallet } =
+    useWeb3();
   console.log("👋 Address:", address);
 
   // The signer is required to sign transactions on the blockchain.
@@ -90,11 +91,38 @@ const App = () => {
       });
   };
 
+  // Add this little piece!
+  if (hasClaimedNFT) {
+    return (
+      <div className="member-page">
+        <div className="backdrop"></div>
+        <div>
+          <button
+            onClick={() => disconnectWallet()}
+            className="btn-hero btn-disconnect"
+          >
+            Disconnect
+          </button>
+        </div>
+        <h1>🎹 FlinkuDAO Member Page</h1>
+        <p>Congratulations on being a member</p>
+      </div>
+    );
+  }
+
   // This is the case where we have the user's address
   // which means they've connected their wallet to our site!
   return (
     <div className="mint-nft">
       <div className="backdrop"></div>
+      <div>
+        <button
+          onClick={() => disconnectWallet()}
+          className="btn-hero btn-disconnect"
+        >
+          Disconnect
+        </button>
+      </div>
       <h1>Mint your free 🍪DAO Membership NFT</h1>
       <button disabled={isClaiming} onClick={() => mintNft()}>
         {isClaiming ? "Minting..." : "Mint your nft (FREE)"}
