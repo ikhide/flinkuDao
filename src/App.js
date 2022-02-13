@@ -125,7 +125,7 @@ const App = () => {
       </div>
       <h1>Mint your free 🍪DAO Membership NFT</h1>
       <button disabled={isClaiming} onClick={() => mintNft()}>
-        {isClaiming ? "Minting..." : "Mint your nft (FREE)"}
+        {isClaiming ? "Minting......" : "Mint your nft (FREE)"}
       </button>
     </div>
   );
