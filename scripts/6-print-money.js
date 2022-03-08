@@ -19,7 +19,7 @@ const tokenModule = sdk.getTokenModule(process.env.TOKEN_MODULE_ADDRESS);
     console.log(
       "✅ There now is",
       ethers.utils.formatUnits(totalSupply, 18),
-      "$BLING in circulation"
+      "BLING in circulation"
     );
   } catch (error) {
     console.error("Failed to print money", error);
